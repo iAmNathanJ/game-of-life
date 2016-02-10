@@ -6,7 +6,6 @@
   "scripts": {
     "test": "./node_modules/.bin/ava",
     "jsbundle": "node_modules/.bin/rollup -c",
-    "build": "npm run jsbundle && npm run jstranspile",
     "dev": "nodemon dist/index.js"
   },
   "repository": {
