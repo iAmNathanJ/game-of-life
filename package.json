@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "node_modules/.bin/ava",
-    "jsbundle": "node_modules/.bin/rollup -c",
+    "bundle": "node_modules/.bin/rollup -c",
     "dev": "nodemon dist/index.js"
   },
   "repository": {
