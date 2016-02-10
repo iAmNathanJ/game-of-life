@@ -6,7 +6,6 @@
   "scripts": {
     "test": "./node_modules/.bin/ava",
     "jsbundle": "node_modules/.bin/rollup -c",
-    "jstranspile": "node_modules/.bin/babel dist/index.js -o dist/index.js",
     "build": "npm run jsbundle && npm run jstranspile",
     "dev": "nodemon dist/index.js"
   },
@@ -22,7 +21,6 @@
   "homepage": "https://github.com/iAmNathanJ/game-of-life#readme",
   "devDependencies": {
     "ava": "^0.11.0",
-    "babel-cli": "^6.5.1",
     "rollup": "^0.25.3"
   },
   "dependencies": {
