@@ -1,6 +1,7 @@
-import express from 'express';
-import gameOfLife from './bin/game-of-life.js';
+'use strict';
 
+const express = require('express');
+const gameOfLife = require('./bin/game-of-life.js');
 const app = express();
 const port = 3000;
 
