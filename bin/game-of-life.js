@@ -1,6 +1,6 @@
-export default function life() {
+module.exports = function life() {
 
-  Array.prototype.grab = (index, def) => this[index] || def;
+  // Array.prototype.grab = (index, def) => this[index] || def;
 
   const _Rand = Math.random;
   const _Round = Math.round;
