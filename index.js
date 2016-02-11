@@ -11,8 +11,12 @@ app.get('/api', (req, res) => {
   res.json(life.state);
 });
 
-app.post('/api', (req, res) => {
+app.get('/*', (req, res) => {
+  res.redirect('/api');
+});
 
+app.post('/api', (req, res) => {
+  console.log(req);
 });
 
 app.listen(port, () => {
