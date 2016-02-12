@@ -11,14 +11,14 @@ const mappable = (len) => {
   return arr;
 };
 
-const grab = (arr, i, j) => {
-  if(!arr[i]) return 0;
-  return arr[i][j] || 0;
-}
-
 const populate = (acc) => acc + String(_Round(_Rand()));
 
 const liveOrDie = (row, cell, state) => {
+
+  const grab = (arr, i, j) => {
+    if(!arr[i]) return 0;
+    return arr[i][j] || 0;
+  }
 
   let thisCellIsAlive = grab(state, row, cell);
 
