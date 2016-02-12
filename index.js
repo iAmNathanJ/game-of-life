@@ -5,6 +5,12 @@ const gameOfLife = require('./bin/game-of-life.js');
 const app = express();
 const port = 3000;
 
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+});
+
 app.get('/api', (req, res) => {
   let life = gameOfLife();
   life.seed(20, 10);
