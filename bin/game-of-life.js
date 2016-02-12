@@ -11,14 +11,41 @@ const mappable = (len) => {
   return arr;
 };
 
+const grab = (arr, i, j) => {
+  if(!arr[i]) return 0;
+  return arr[i][j] || 0;
+}
+
 const populate = (acc) => acc + String(_Round(_Rand()));
-const getAdjacent = (row, col, state) => {
+
+const liveOrDie = (row, cell, state) => {
+
+  let thisCellIsAlive = grab(state, row, cell);
+
+  let neighbors = [
+    grab(state, row-1, cell-1),
+    grab(state, row-1, cell+1),
+    grab(state, row+1, cell-1),
+    grab(state, row+1, cell+1),
+    grab(state, row-1, cell),
+    grab(state, row+1, cell),
+    grab(state, row, cell+1),
+    grab(state, row, cell-1)
+  ];
+
+  let liveNeighbors = neighbors.reduce((total, cell) => {
+    return total + parseInt(cell);
+  }, 0);
+
+  if(thisCellIsAlive) {
+    return (liveNeighbors > 1 && liveNeighbors < 4) ? 1 : 0;
+  } else {
+    return (liveNeighbors === 3) ? 1 : 0;
+  }
 };
 
 
 module.exports = function life() {
-
-  // Array.prototype.grab = (index, def) => this[index] || def;
 
   return {
 
@@ -31,8 +58,10 @@ module.exports = function life() {
     },
 
     generate() {
-      return this.state.map(row => {
-
+      return this.state.map((row, rowNum) => {
+        return row.split('').map((cell, cellNum) => {
+          return liveOrDie(rowNum, cellNum, this.state);
+        }).join('');
       });
     }
   };
