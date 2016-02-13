@@ -19,6 +19,10 @@ button {
   margin-bottom: 20px;
 }
 
+button.stop {
+  display: none;
+}
+
 main {
   font-size: 2rem;
   width: 100vw;
