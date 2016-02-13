@@ -2,7 +2,7 @@
   "name": "game-of-life",
   "version": "0.0.1",
   "description": "Conway's Game of Life",
-  "main": "dist/index.js",
+  "main": "index.js",
   "scripts": {
     "test": "node_modules/.bin/ava",
     "start": "nodemon index.js"
