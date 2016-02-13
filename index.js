@@ -2,7 +2,7 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const gameOfLife = require('./bin/game-of-life.js');
+const gameOfLife = require('./lib/game-of-life.js');
 const app = express();
 const port = 3000;
 
