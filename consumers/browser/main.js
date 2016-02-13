@@ -3,7 +3,9 @@
   'use strict';
 
   const DOM = {
-    btnGenerate: document.querySelector('.btn'),
+    btnGenerate: document.querySelector('.btn.generate'),
+    btnStart: document.querySelector('.btn.start'),
+    btnStop: document.querySelector('.btn.stop'),
     main: document.querySelector('.app')
   };
 
@@ -37,10 +39,30 @@
     getNextGen(currentState);
   });
 
+  DOM.btnPlay.addEventListener('click', (e) => {
 
-  (function create() {
+    getNextGen(currentState);
+
+    e.target.style.display = 'none';
+    DOM.btnStop.style.display = 'block';
+
+    let go = setInterval(() => {
+      getNextGen(currentState);
+    }, 1000);
+
+    DOM.btnStop.addEventListener('click', (e) => {
+      clearInterval(go);
+      e.target.style.display = 'none';
+      DOM.btnStart.style.display = 'block';
+    });
+  });
+
+
+  function create() {
     xhr.open('GET', 'http://localhost:3000/api');
     xhr.send();
-  })();
+  };
+
+  create();
 
 })();
