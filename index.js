@@ -7,6 +7,7 @@ const app = express();
 const port = 3000;
 
 app.use(bodyParser.urlencoded({ extended: false }));
+
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:8080');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
