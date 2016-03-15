@@ -4,9 +4,8 @@
   "description": "Conway's Game of Life",
   "main": "index.js",
   "scripts": {
-    "test": "node_modules/.bin/ava",
-    "start": "nodemon index.js",
-    "build": "rollup -c"
+    "test": "tape test/test.js | tap-spec",
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -19,12 +18,13 @@
   },
   "homepage": "https://github.com/iAmNathanJ/game-of-life#readme",
   "devDependencies": {
-    "ava": "^0.11.0",
-    "rollup": "^0.25.3"
+    "tap-spec": "^4.1.1",
+    "tape": "^4.5.1"
   },
   "dependencies": {
     "body-parser": "^1.15.0",
     "express": "^4.13.4",
-    "knockout": "^3.4.0"
+    "knockout": "^3.4.0",
+    "lodash": "^4.6.1"
   }
 }
