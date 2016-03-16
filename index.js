@@ -1,3 +1,3 @@
 'use strict';
 
-const life = require('./lib/game-of-life');
+window.$_life = require('./lib/game-of-life');
