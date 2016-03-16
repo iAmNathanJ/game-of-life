@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "tape test/test.js | tap-spec",
-    "build": "browserify index.js -o bundle.js -d"
+    "build": "browserify index.js -o bundle.js"
   },
   "repository": {
     "type": "git",
