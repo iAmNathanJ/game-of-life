@@ -1,7 +1,6 @@
 'use strict';
 
 const seed = require('./seed.js');
-const surveyor = require('./surveyor.js');
 
 const rules = {
   survivors(neighbors) {
@@ -12,7 +11,12 @@ const rules = {
   }
 };
 
-module.exports = (function Life() {
+module.exports = function Life(options) {
+
+  const surveyor = require('./surveyor.js')({
+    limitX: options.limitX,
+    limitY: options.limitY
+  });
 
   let state = [];
 
@@ -20,24 +24,23 @@ module.exports = (function Life() {
 
     generate() {
       let neighbors;
-      let potentialLife = [];
 
       let survivors = state.filter(location => {
         neighbors = surveyor.countNeighbors(location, state);
-        potentialLife.concat(surveyor.potentialInfluence(location, state, potentialLife));
         return rules.survivors(neighbors);
       });
 
-      // let potentialLife = state.reduce((candidates, location) => {
-      //   return candidates.concat(neighbors);
-      // }, []);
+      let potentialLife = state.reduce((candidates, location) => {
+        neighbors = surveyor.potentialInfluence(location, state, candidates);
+        return candidates.concat(neighbors);
+      }, []);
 
-      // let newLife = potentialLife.filter(location => {
-      //   neighbors = surveyor.countNeighbors(location, state);
-      //   return rules.newLife(neighbors);
-      // });
+      let newLife = potentialLife.filter(location => {
+        neighbors = surveyor.countNeighbors(location, state);
+        return rules.newLife(neighbors);
+      });
 
-      return state = survivors.concat(potentialLife);
+      return state = survivors.concat(newLife);
     }
   };
 
@@ -57,4 +60,4 @@ module.exports = (function Life() {
 
   return api;
 
-})();
+};

@@ -1,21 +1,22 @@
 'use strict';
 
 const ROUND = Math.round;
+const CEIL = Math.ceil;
 const RAND = Math.random;
 
-module.exports = function Seed(limitX, limitY) {
+module.exports = function Seed(w, h) {
 
-  if(Array.isArray(limitX)) {
-    return limitX;
+  if(Array.isArray(w)) {
+    return w;
   }
 
-  limitX = limitX || 6;
-  limitY = limitY || limitX;
+  let width = w || 6;
+  let height = h || width;
 
-  let upperX = ROUND(limitX / 2)
-    , upperY = ROUND(limitY / 2)
-    , lowerX = upperX - limitX
-    , lowerY = upperY - limitY
+  let upperX = CEIL(width / 2)
+    , upperY = CEIL(height / 2)
+    , lowerX = CEIL(-width / 2)
+    , lowerY = CEIL(-height / 2)
     , x = lowerX
     , y = lowerY
     , coords = [];

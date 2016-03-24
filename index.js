@@ -1,5 +1,7 @@
 'use strict';
 
+// window.$_life = require('./src/game-of-life');
+
 let controlState = [
   { x: 0, y: 0 },
   { x: 0, y: 1 },
@@ -47,14 +49,17 @@ let controlState = [
 
 ];
 
-// window.$_life = require('./lib/game-of-life');
+let life = require('./src/game-of-life')({
+  limitX: 5, limitY: 6
+});
 
-let life = require('./lib/game-of-life');
-life.seed(controlState);
+life.seed([
+
+]);
 
 (function go() {
 
-  console.log(life.state);
+  // console.log(life.state);
   life.generate();
 
   setTimeout(_ => {
